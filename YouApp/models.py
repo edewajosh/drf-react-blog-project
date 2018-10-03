@@ -76,7 +76,7 @@ class Fuel(models.Model):
     
 
     def __str__(self):
-        return self.last_reading
+        return self.litres
 
      
 

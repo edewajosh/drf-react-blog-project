@@ -76,7 +76,7 @@ class Fuel(models.Model):
     
 
     def __str__(self):
-        return self.litres
+        return str(self.litres)
 
      
 

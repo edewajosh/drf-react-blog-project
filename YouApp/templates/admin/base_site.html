@@ -1,0 +1,20 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | Transport Management System{% endblock %}
+{% block extrastyle %}
+    
+    <style>
+        
+        #branding h1 a:visited{
+            color: #fffefc;
+        }
+        
+    </style>
+    
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">ADMIN DASHBOARD</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

@@ -4,7 +4,7 @@ from .models import Department, Driver, Assignment, Vehicle, Service, Fuel
 
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('id', 'name', 'description')
 
 @admin.register(Driver)
 class DriverAdmin(admin.ModelAdmin):

@@ -22,3 +22,6 @@ def assignment_details(request):
         form = AssignmentForm()
 
     return render(request, 'home.html', {'form' : form})
+
+def index(request):
+    return render(request, 'index.html')

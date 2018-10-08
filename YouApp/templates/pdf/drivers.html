@@ -1,0 +1,24 @@
+{% extends "base/generic.html" %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>License</th>
+            <th>PIN</th> 
+            <th>Phone Number</th>
+        </tr>
+        {% for driver in drivers %}
+        <tr>
+            <td>{{ driver.id }}</td>
+            <td>{{ driver.firstname }}</td>
+            <td>{{ driver.lastname }}</td>
+            <td>{{ driver.license }}</td>
+            <td>{{ driver.pin }}</td>
+            <td>{{ driver.phonenumber }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

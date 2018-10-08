@@ -1,7 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-# Create your views here.
+from django.http import HttpResponseRedirect, HttpResponse
+from django.views.generic import View
 
+from .models import Driver
+
+from .utils import render_to_pdf
+
+from datetime import datetime
 # Notification after speedometer counters 5000km
 
 from .forms import AssignmentForm
@@ -25,3 +30,50 @@ def assignment_details(request):
 
 def index(request):
     return render(request, 'index.html')
+
+
+class GeneratePdf(View):
+    def get(self, request, *args, **kwargs):
+        data = {
+            'today' : "Today",
+            'amount' : 39.99,
+            'customer_name' : 'Cooper Mann',
+            'order_id' : 1233434,
+        }
+        pdf = render_to_pdf('pdf/invoice.html', data)
+
+        """
+        if pdf:
+            response = template.render(context)
+            filename = "Invoice_%s.pdf" %("12341231")
+            content = "inline; filename='%s'" %(filename)
+            download = request.GET.get("download")
+            if download:
+                content="attachment;filename='%s'" %(filename)
+            response['Content-Disposition'] = content
+            return response
+        """
+        return HttpResponse(pdf, content_type='application/pdf')
+
+
+def generatePDF_view(request, *args, **kwargs):
+
+    drivers = Driver.objects.all()
+
+    data = {
+        "drivers" : drivers,
+    }
+    pdf = render_to_pdf('pdf/drivers.html', data)
+
+    """
+    if pdf:
+        response = template.render(context)
+        filename = "Invoice_%s.pdf" %("12341231")
+        content = "inline; filename='%s'" %(filename)
+        download = request.GET.get("download")
+        if download:
+            content="attachment;filename='%s'" %(filename)
+        response['Content-Disposition'] = content
+        return response
+    """
+    return HttpResponse(pdf, content_type='application/pdf')

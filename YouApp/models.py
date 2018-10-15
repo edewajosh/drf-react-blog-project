@@ -8,7 +8,7 @@ class Department(models.Model):
     def __str__(self):
         return self.name
 
-    
+
 
 class Driver(models.Model):
     department = models.ForeignKey(Department,verbose_name='list of departments', on_delete=models.CASCADE)
@@ -19,7 +19,7 @@ class Driver(models.Model):
     phonenumber = models.IntegerField()
 
     def __str__(self):
-        return self.firstname + " " + self.lastname 
+        return self.firstname + " " + self.lastname
 
 class Vehicle(models.Model):
     name = models.CharField(max_length=50)
@@ -57,26 +57,25 @@ class Service(models.Model):
         max_length=2,
         choices = SIZE_OF_PROBLEM,
         default = MINOR,
-        ) 
+        )
     comment = models.TextField()
+    published_on = models.DateField(default=datetime.today)
     serviced_on = models.DateTimeField(default=datetime.now)
-    scheduled_service = models.DateTimeField(default=datetime.now)
+    scheduled_service = models.FloatField()
     cost = models.FloatField()
+    defect_report = models.TextField(blank=True, default="No Defect Reported")
 
     def __str__(self):
-        return self.details_of_service 
+        return self.details_of_service
 
-class Fuel(models.Model): 
+class Fuel(models.Model):
     # generate a report of that particular month for that particular vehicle
     vehicle = models.ForeignKey(Vehicle, verbose_name='list of vehicles', on_delete=models.CASCADE)
     speedometer = models.IntegerField()
     litres = models.FloatField()
     cost = models.FloatField()
     reading_on = models.DateTimeField(default=datetime.now)
-    
+
 
     def __str__(self):
         return str(self.litres)
-
-     
-

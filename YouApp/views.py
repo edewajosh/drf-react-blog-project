@@ -2,9 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import View
 
-from .models import Driver
-
-from .utils import render_to_pdf
+from YouApp.models import Driver,Service
+from YouApp.utils import render_to_pdf
 
 from datetime import datetime
 # Notification after speedometer counters 5000km
@@ -20,7 +19,7 @@ def assignment_details(request):
         # check whether it's valid:
         if form.is_valid():
             # process the data in form._cleaned data as required
-            # ...
+            # ...s
             # redirect to a new URL:
             return HttpResponseRedirect('/thanks')
     else:
@@ -30,6 +29,9 @@ def assignment_details(request):
 
 def index(request):
     return render(request, 'index.html')
+
+def next(request):
+    return render(request, 'next.html')
 
 
 class GeneratePdf(View):
@@ -76,4 +78,14 @@ def generatePDF_view(request, *args, **kwargs):
         response['Content-Disposition'] = content
         return response
     """
+
     return HttpResponse(pdf, content_type='application/pdf')
+
+def serviceReport(request,year, month, *args, **kwargs):
+    service = Service.objects.filter(published_on__year=year).filter(published_on__month=month)
+    context = {
+        "service" : service,
+    }
+
+    pdf = render_to_pdf('pdf/service.html', context)
+    return HttpResponse(pdf, content_type="application/pdf")

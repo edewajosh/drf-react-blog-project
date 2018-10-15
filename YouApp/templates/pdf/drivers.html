@@ -1,18 +1,25 @@
 {% extends "base/generic.html" %}
 
+<style>
+    td {
+        font-size: 20pt;
+    }
+</style>
+
 {% block content %}
-    <table>
+    <h3 class="lead">Kenya Railways Drivers Summary </h3>
+    <table class="table">
         <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Second Name</th>
-            <th>License</th>
-            <th>PIN</th> 
-            <th>Phone Number</th>
+            <th class="col">ID</th>
+            <th class="col">First Name</th>
+            <th class="col">Second Name</th>
+            <th class="col">License</th>
+            <th class="col">PIN</th> 
+            <th class="col">Phone Number</th>
         </tr>
         {% for driver in drivers %}
         <tr>
-            <td>{{ driver.id }}</td>
+            <td class="row">{{ driver.id }}</td>
             <td>{{ driver.firstname }}</td>
             <td>{{ driver.lastname }}</td>
             <td>{{ driver.license }}</td>

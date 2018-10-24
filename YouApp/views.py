@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import View
 
-from YouApp.models import Driver,Service
+from YouApp.models import Driver,Service, Vehicle
 from YouApp.utils import render_to_pdf
 
-from datetime import datetime
+from datetime import datetime, date
 # Notification after speedometer counters 5000km
 
 from .forms import AssignmentForm
@@ -83,9 +83,24 @@ def generatePDF_view(request, *args, **kwargs):
 
 def serviceReport(request,year, month, number, *args, **kwargs):
     service = Service.objects.filter(vehicle_id=number).filter(published_on__year=year).filter(published_on__month=month)
+    vehicle = Vehicle.objects.get(pk=number)
+    today = date.today()
     context = {
         "service" : service,
+        "vehicle" : vehicle,
+        "today" : today,
     }
 
     pdf = render_to_pdf('pdf/service.html', context)
+    return HttpResponse(pdf, content_type="application/pdf")
+
+def Generalservice(request,year, month, *args, **kwargs):
+    service = Service.objects.filter(published_on__year=year).filter(published_on__month=month)
+    today = date.today()
+    context = {
+        "service" : service,
+        "today" : today,
+    }
+
+    pdf = render_to_pdf('pdf/serviceall.html', context)
     return HttpResponse(pdf, content_type="application/pdf")

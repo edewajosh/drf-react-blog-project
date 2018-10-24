@@ -81,8 +81,8 @@ def generatePDF_view(request, *args, **kwargs):
 
     return HttpResponse(pdf, content_type='application/pdf')
 
-def serviceReport(request,year, month, *args, **kwargs):
-    service = Service.objects.filter(published_on__year=year).filter(published_on__month=month)
+def serviceReport(request,year, month, number, *args, **kwargs):
+    service = Service.objects.filter(vehicle_id=number).filter(published_on__year=year).filter(published_on__month=month)
     context = {
         "service" : service,
     }

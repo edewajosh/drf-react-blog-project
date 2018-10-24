@@ -35,8 +35,8 @@ class Assignment(models.Model):
     driver = models.ForeignKey(Driver, verbose_name='list of drivers', on_delete=models.CASCADE)
     vehicle  = models.ForeignKey(Vehicle, verbose_name='list of vehicles', on_delete=models.CASCADE)
     destination = models.CharField(max_length = 50)
-    departure = models.DateTimeField(default=datetime.now)
-    arrival = models.DateTimeField(default=datetime.now, blank=True, null=True)
+    departure = models.DateField(default=datetime.now)
+    arrival = models.DateField(default=datetime.now, blank=True, null=True)
     description = models.TextField()
 
     def __str__(self):
@@ -60,13 +60,13 @@ class Service(models.Model):
         )
     comment = models.TextField()
     published_on = models.DateField(default=datetime.today)
-    serviced_on = models.DateTimeField(default=datetime.now)
+    serviced_on = models.DateField(default=datetime.now)
     scheduled_service = models.FloatField()
     cost = models.FloatField()
     defect_report = models.TextField(blank=True, default="No Defect Reported")
 
     def __str__(self):
-        return self.details_of_service
+        return str(self.serviced_on)
 
 class Fuel(models.Model):
     # generate a report of that particular month for that particular vehicle
@@ -74,7 +74,7 @@ class Fuel(models.Model):
     speedometer = models.IntegerField()
     litres = models.FloatField()
     cost = models.FloatField()
-    reading_on = models.DateTimeField(default=datetime.now)
+    reading_on = models.DateField(default=datetime.now)
 
 
     def __str__(self):

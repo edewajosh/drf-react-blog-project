@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 const Login = () => {
 
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit, formState: {errors}} = useForm()
 
     
     const onSubmitForm = (formData) => {
@@ -16,6 +16,7 @@ const Login = () => {
             <input type='text' name='username' {...register('username', {required: true})}/>
             <label htmlFor='password'>Password:</label>
             <input type='password' name='password' {...register('password', {required: true})}/>
+            { errors.message && errors.message.message }
             <input type='submit' value='Login'/>
         </form>
     )

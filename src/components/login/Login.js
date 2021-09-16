@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import './login.css'
-import splash from '../../images/gowen.jpg'
+import './login.css';
+import splash from '../../images/gowen.jpg';
 import Signup from './Signup';
 
 
@@ -12,8 +12,8 @@ const Login = ({setNavbar, onSubmitForm}) => {
     }, [])
 
     return (
-        <div className="container">
-            <div className="row mt-4">
+        <div className="container shadow-lg p-3 mb-5 bg-white rounded mt-3">
+            <div className="row container-row">
                 <div className="col-md-5">
                     <img src={splash} alt="Splash" className="login-image"/>
                 </div>

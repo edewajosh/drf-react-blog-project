@@ -3,11 +3,6 @@
     margin: 0;
 }
 
-body {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
 .login-image {
     max-width: 100%;
     max-height: 100%;
@@ -28,4 +23,27 @@ body {
 .btn-login,
 .btn-signup {
     width: 100%;
+}
+
+.create-acount {
+    color: #FF7F7F;
+    text-align: center;
+}
+
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.social-account {
+    border: 1px solid #000;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.form-control {
+    border-radius: 10px !important;
+    background-color: rgb(243, 235, 235) !important;
 }

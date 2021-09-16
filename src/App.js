@@ -11,7 +11,11 @@ import './App.css';
 
 const App = () => {
 
-    const [isNavBarHidden, setIsNavBarHidden] = useState(false)
+    const [isNavBarHidden, setIsNavBarHidden] = useState(true)
+    const [token, setToken] = useState()
+    if(!token){
+        return <Login setToken={setToken} />
+    }
 
     return ( 
         <>

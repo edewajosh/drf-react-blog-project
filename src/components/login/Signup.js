@@ -4,13 +4,32 @@ import { Form, Button } from 'react-bootstrap';
 import { FaFacebookF, FaGoogle, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 
-const Signup = () => {
+const Signup = (setToken) => {
 
     const {register, handleSubmit, formState: {errors}} = useForm()
 
-    const onSubmitForm = (formData) => {
-        console.log('User name: ', formData.email)
+    const onSubmitForm = async (formData, e) => {
+        e.preventDefault()
+        console.log('User name: ', formData)
         console.log('Password : ', formData.password)
+        const token = await loginUser({
+            formData
+        });
+        setToken(token)
+    }
+
+    // authenticate user
+    const loginUser = async (credentials) => {
+        const res = await fetch(`http://localhost:8000/api/token`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(credentials)
+        })
+
+        const data = await res.json()
+        setToken(data.access_token)
     }
 
     return(
@@ -24,7 +43,7 @@ const Signup = () => {
                     <FaLinkedin className="social-account"/> 
                 </IconContext.Provider>
             </div>
-            <p className="text-center">Or use your email for registration</p>
+            <p className="text-center mt-4">Or use your email for registration:</p>
             <Form onSubmit={handleSubmit(onSubmitForm)} className="login">
                 <Form.Group className='mb-3' controlId='formBasicUsername'>
                     <Form.Control type="text" placeholder="Name" name="name" className="input-field" {...register('name', {required: true})}/>

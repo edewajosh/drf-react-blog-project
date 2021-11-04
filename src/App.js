@@ -12,6 +12,8 @@ const App = () => {
                 <Route exact path="/"><Home/></Route>
                 <Route path="/tangazo"><Tangazo/></Route>
                 <Route path="/post-article"><Editor/></Route>
+                {/* <Route path="/post-article/category"><ArticleCategory/></Route>
+                <Route path="/post-article/article"><Article/></Route> */}
             </Switch>
         </Router>
     )

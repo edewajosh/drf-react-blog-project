@@ -10,8 +10,7 @@ const Editor = () => {
 
     return (
         <div className={'edit-form'}>
-            <div className={'side-menu'}>
-                <h1>Menu</h1>
+            <div className={'top-menu'}>
                 <ul className={"group-list"}>
                     <li onClick={() =>setNumber(0)}>Author</li>
                     <li onClick={() =>setNumber(1)}>Category</li>

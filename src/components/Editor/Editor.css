@@ -1,11 +1,10 @@
+.group-list {
+    display: flex;
+    justify-content: space-between;
+}
+
 .group-list>li {
     list-style: none;
-    border: 1px solid burlywood;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    padding: 5px;
-    margin-right: 5px;
 }
 
 .group-list>li:hover {
@@ -15,23 +14,14 @@
 }
 
 .edit-form {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 5px 10px 10px 5px;
-    display: flex;
-}
-
-.side-menu {
-    padding: 0 10px 0 10px;
-    margin-right: 20px;
-    border: 1px solid #000;
-    border-radius: 10px;
+    display: blocks;
+    width: 100%;
+    padding: 5px;
 }
 
 .content {
     display: grid;
     place-items: center;
-    margin-left: 20px;
     width: 100%;
     border: 1px solid #000;
     border-radius: 10px;

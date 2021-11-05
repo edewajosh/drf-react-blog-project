@@ -9,11 +9,19 @@ const ArticleCategory = () => {
     return(
         <div className={'content'}>
             <form className={'form'} onSubmit={handleSubmit(onSubmit)}>
-                <input className={"control-form"} type="text" name="title" {...register("title", {required: true})} placeholder="Title"/>
-                {errors.title && <p>Title Required</p>}
-                <input className={"control-form"} type="text" name="description" {...register("description", {required: true})} placeholder="Description"/>
-                {errors.description && <p>Description Required</p>}
-                <input type="submit" value="Submit" className={"author-submit"}/>
+               <div className="{ form-group }">
+                   <label for="title">Name: </label>
+                   <input className={"control-form"} type="text" name="title" {...register("title", {required: true})} placeholder="Title"/>
+                    {errors.title && <p>Title Required</p>}
+               </div>
+                <div>
+                    <label>Description: </label>
+                    <input className={"control-form"} type="text" name="description" {...register("description", {required: true})} placeholder="Description"/>
+                    {errors.description && <p>Description Required</p>}
+                </div>
+                <div className="{form-group}">
+                    <input type="submit" value="Submit" className={"author-submit"}/>
+                </div>
             </form>
         </div>
     )

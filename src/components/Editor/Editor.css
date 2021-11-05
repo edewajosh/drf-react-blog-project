@@ -1,10 +1,15 @@
 .group-list {
     display: flex;
     justify-content: space-between;
+    background: #F0DCD8;
+    padding-left: 0;
+    border-radius: 8px;
 }
 
 .group-list>li {
     list-style: none;
+    width: 100%;
+    text-align: center;
 }
 
 .group-list>li:hover {

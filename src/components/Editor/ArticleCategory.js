@@ -5,6 +5,18 @@ const ArticleCategory = () => {
 
     const onSubmit = (data) => {
         console.log(data)
+        addArticleCategory(data)
+    }
+
+    const addArticleCategory = async (data) => {
+        await fetch("http://localhost:8000/api/articles/category", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+            
+        })
     }
     return(
         <div className={'content'}>

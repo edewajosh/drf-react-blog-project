@@ -1,0 +1,40 @@
+.dashboard-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px 10px 10px 5px;
+    display: flex;
+}
+
+.side-menu {
+    padding: 0 10px 0 10px;
+    margin-right: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.dashboard-content {
+    display: grid;
+    place-items: center;
+    margin-left: 20px;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding-bottom: 10px;
+}
+
+.tab-list {
+    list-style: none;
+    padding: 0;
+}
+
+.tab-list>li {
+    border-bottom: 1px solid #000;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.tab-list>li:hover {
+    cursor: pointer;
+    background: lightblue;
+    border-bottom: none;
+}

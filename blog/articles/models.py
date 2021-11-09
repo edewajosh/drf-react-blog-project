@@ -16,7 +16,7 @@ class Category(models.Model):
         return self.title
     
 class Article(models.Model):
-    Category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     authors = models.ManyToManyField(Author)
     title = models.CharField(max_length=255)
     body = models.TextField()

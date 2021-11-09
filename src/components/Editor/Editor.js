@@ -18,7 +18,7 @@ const Editor = () => {
                 </ul>
             </div>
             {/* Switch between different forms */}
-            {(number === 0 && <Author/>) 
+            {(number === 0 && <Author />) 
             || ( number === 1 && <ArticleCategory/>) 
             || (number === 2 && <Article/>)}
         </div>

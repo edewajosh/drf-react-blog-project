@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 
-const Author = () => {
+const Author = ({color}) => {
     const { register, handleSubmit, formState: {errors }} = useForm()
 
     const onSubmit = (author) => {

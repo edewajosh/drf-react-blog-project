@@ -20,15 +20,16 @@ const ArticleCategory = () => {
     }
     return(
         <div className={'content'}>
+            <h3>Create Article Categories</h3>
             <form className={'form'} onSubmit={handleSubmit(onSubmit)}>
                <div className="{ form-group }">
-                   <label for="title">Name: </label>
+                   <label>Name: </label>
                    <input className={"control-form"} type="text" name="title" {...register("title", {required: true})} placeholder="Title"/>
                     {errors.title && <p>Title Required</p>}
                </div>
                 <div>
                     <label>Description: </label>
-                    <input className={"control-form"} type="text" name="description" {...register("description", {required: true})} placeholder="Description"/>
+                    <input className={"control-form"} type="textarea" name="description" {...register("description", {required: true})} placeholder="Description"/>
                     {errors.description && <p>Description Required</p>}
                 </div>
                 <div className="{form-group}">

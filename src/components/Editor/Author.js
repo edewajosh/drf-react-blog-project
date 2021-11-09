@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 
-const Author = () => {
+const Author = ({color}) => {
     const { register, handleSubmit, formState: {errors }} = useForm()
 
     const onSubmit = (author) => {
@@ -10,7 +10,7 @@ const Author = () => {
 
     // Add Author
     const addAuthor = async(author) => {
-        const res = await fetch('http://localhost:8000/api/articles/author',{
+        await fetch('http://localhost:8000/api/articles/author',{
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

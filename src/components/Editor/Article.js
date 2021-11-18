@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 
 const Article = ({categories, authors}) => {
@@ -19,6 +20,7 @@ const Article = ({categories, authors}) => {
             body: JSON.stringify(data)
         })
     }
+
     return(
         <div>
             <h3>Add your article</h3>
@@ -27,12 +29,12 @@ const Article = ({categories, authors}) => {
                 { errors.title && <p>Title is required</p>}
                 <input type="textarea" name="body" {...register("body", {required: true})}  placeholder="Add article body"/>
                 { errors.body && <p>Body is required</p>}
-                <select name="category">
+                <select {...register('category', {required: true})}>
                     { categories.map((category) => (
                         <option key={category.id} value={category.id}>{category.title}</option>
                     ))}
                 </select>
-                <select name="authors">
+                <select multiple={true} {...register('authors', {required: true})}>
                     { authors.map((author) => (
                         <option key={author.id} value={author.id}>{author.name}</option>
                     ))}

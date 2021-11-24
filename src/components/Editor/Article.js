@@ -1,8 +1,6 @@
 import { useForm } from "react-hook-form"
 
 const Article = ({categories, authors}) => {
-    console.log(categories)
-    console.log(authors)
     const {register, handleSubmit, formState: {errors}} = useForm()
 
     const onSubmit = (data) => {
